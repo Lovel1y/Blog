@@ -25,12 +25,13 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <form action="{{route('admin.user.update', $user->id)}}" method="post" class="w-25">
                             @csrf
                             @method('PATCH')
                             <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Имя пользователя" value="{{$user->name}}">
+                                <input type="text" class="form-control" name="name" placeholder="Имя пользователя"
+                                       value="{{$user->name}}">
                                 @error('name')
                                 <div class="text-danger">
                                     Это поле необходимо для заполнения
@@ -38,7 +39,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email" value="{{$user->email}}"
+                                <input type="email" class="form-control" name="email" placeholder="Email"
+                                       value="{{$user->email}}"
                                 @error('email')
                                 <div class="text-danger">
                                     Это поле необходимо для заполнения
