@@ -26,8 +26,7 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
-        dd($data);//Выводим данные
-        User::firstOrCreate($data);
+        User::firstOrCreate($data['email'],$data);
         return redirect()->route('admin.user.index');
 
     }
