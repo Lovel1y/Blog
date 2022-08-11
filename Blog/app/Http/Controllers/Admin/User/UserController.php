@@ -19,7 +19,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('admin.user.create');
+        $roles = User::getRoles();
+        return view('admin.user.create', compact('roles'));
     }
 
     public function store(StoreRequest $request)
@@ -61,7 +62,7 @@ class UserController extends Controller
         return view('admin.user.restore');
     }
 
-    public function restorestore(RestoreRequest $request)
+    public function restoreStore(RestoreRequest $request)
     {
         $data = $request->validated();
 

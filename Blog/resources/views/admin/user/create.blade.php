@@ -52,6 +52,20 @@
                                 </div>
                                 @enderror
                             </div>
+                            <div class="form-group w-50">
+                                <label>Роль</label>
+                                <select name="role_id" class="form-control">
+                                    @foreach($roles as $id => $role)
+                                        <option value="{{$id}}"
+                                            {{$id ==old('role_id') ? ' selected' : ''}}>{{$role}}</option>
+                                    @endforeach
+                                </select>
+                                @error('role_id')
+                                <div class="text-danger">
+                                    {{$message}}
+                                </div>
+                                @enderror
+                            </div>
                             <input type="submit" class="btn btn-primary" value="Добавить">
                         </form>
                     </div>

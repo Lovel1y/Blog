@@ -31,11 +31,10 @@
                             @method('PATCH')
                             <div class="form-group">
                                 <input type="text" class="form-control" name="id" placeholder="ID пользователя">
-                                @error('title')
+                                @error('id')
                                 <div class="text-danger">
-                                    Это поле необходимо для заполнения
+                                    {{$message}}
                                 </div>
-
                                 @enderror
                             </div>
                             <input type="submit" class="btn btn-primary" value="Восстановить">

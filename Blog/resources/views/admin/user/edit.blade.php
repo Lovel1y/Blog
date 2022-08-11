@@ -29,24 +29,39 @@
                         <form action="{{route('admin.user.update', $user->id)}}" method="post" class="w-25">
                             @csrf
                             @method('PATCH')
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="name" placeholder="Имя пользователя" value="{{$user->name}}">
-                                    @error('name')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="Имя пользователя"
+                                       value="{{$user->name}}">
+                                @error('name')
+                                <div class="text-danger">
+                                    {{$message}}
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" name="email" placeholder="Email" value="{{$user->email}}">
-                                    @error('email')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" placeholder="Email"
+                                       value="{{$user->email}}">
+                                @error('email')
+                                <div class="text-danger">
+                                    {{$message}}
                                 </div>
-
-                                <input type="submit" class="btn btn-primary" value="Добавить">
+                                @enderror
+                            </div>
+                            <div class="form-group w-50">
+                                <label>Роль</label>
+                                <select name="role_id" class="form-control">
+                                    @foreach($roles as $id => $role)
+                                        <option value="{{$id}}"
+                                            {{$id ==old('role_id') ? ' selected' : ''}}>{{$role}}</option>
+                                    @endforeach
+                                </select>
+                                @error('role_id')
+                                <div class="text-danger">
+                                    {{$message}}
+                                </div>
+                                @enderror
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Добавить">
                     </div>
                 </div>
                 <!-- /.row -->

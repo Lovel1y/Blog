@@ -64,7 +64,7 @@ class PostController extends BaseController
         return view('admin.post.restore');
     }
 
-    public function restorestore(RestoreRequest $request)
+    public function restoreStore(RestoreRequest $request)
     {
         $data = $request->validated();
 
