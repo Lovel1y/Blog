@@ -48,14 +48,15 @@
                                 @enderror
                             </div>
                             <div class="form-group w-50">
+                                <input type="hidden" name="user_id" value="{{$user->id}}">
                                 <label>Роль</label>
-                                <select name="role_id" class="form-control">
+                                <select name="role" class="form-control">
                                     @foreach($roles as $id => $role)
                                         <option value="{{$id}}"
-                                            {{$id ==old('role_id') ? ' selected' : ''}}>{{$role}}</option>
+                                            {{$id ==$user->role ? ' selected' : ''}}>{{$role}}</option>
                                     @endforeach
                                 </select>
-                                @error('role_id')
+                                @error('role')
                                 <div class="text-danger">
                                     {{$message}}
                                 </div>

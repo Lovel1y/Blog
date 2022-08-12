@@ -54,13 +54,13 @@
                             </div>
                             <div class="form-group w-50">
                                 <label>Роль</label>
-                                <select name="role_id" class="form-control">
+                                <select name="role" class="form-control">
                                     @foreach($roles as $id => $role)
                                         <option value="{{$id}}"
                                             {{$id ==old('role_id') ? ' selected' : ''}}>{{$role}}</option>
                                     @endforeach
                                 </select>
-                                @error('role_id')
+                                @error('role')
                                 <div class="text-danger">
                                     {{$message}}
                                 </div>

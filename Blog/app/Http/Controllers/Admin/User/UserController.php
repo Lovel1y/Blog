@@ -47,7 +47,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('admin.user.edit', compact('user'));
+        $roles = User::getRoles();
+        return view('admin.user.edit', compact('user', 'roles'));
     }
 
     public function destroy(User $user)
