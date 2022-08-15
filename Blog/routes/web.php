@@ -16,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 //Route::resource('post',\App\Http\Controllers\Main\MainController::class);
 
 
-Route::get('/', '\App\Http\Controllers\Admin\Main\AdminController@index')->name('admin');
+Route::get('/','\App\Http\Controllers\Main\MainController@index')->name('main');
+Route::get('/admin', '\App\Http\Controllers\Admin\Main\AdminController@index')->name('admin');
 
-Route::group(['middleware' => 'admin'],function(){
+Route::group(['middleware' => ['auth','admin', 'verified']],function(){
     Route::resource('admin/categories',\App\Http\Controllers\Admin\Category\CategoryController::class)->names('admin.category');
     Route::get('admin/category/restore','\App\Http\Controllers\Admin\Category\CategoryController@restore')->name('admin.category.restore');
     Route::patch('admin/categories','\App\Http\Controllers\Admin\Category\CategoryController@restorestore')->name('admin.category.restore.store');
@@ -56,4 +57,4 @@ Route::group(['middleware' => 'admin'],function(){
 
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
