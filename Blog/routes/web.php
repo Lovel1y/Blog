@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/','\App\Http\Controllers\Main\MainController@index')->name('main');
-Route::get('/admin', '\App\Http\Controllers\Admin\Main\AdminController@index')->name('admin');
+Route::get('/admin', '\App\Http\Controllers\Admin\Main\AdminController@index')->name('admin.main.index');
 
 Route::group(['middleware' => ['auth','admin', 'verified']],function(){
     Route::resource('admin/categories',\App\Http\Controllers\Admin\Category\CategoryController::class)->names('admin.category');

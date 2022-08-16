@@ -7,12 +7,7 @@ use App\Http\Requests\Admin\User\RestoreRequest;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Jobs\StoreUserJob;
-use App\Mail\User\PasswordMail;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
