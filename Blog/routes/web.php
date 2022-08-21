@@ -17,9 +17,16 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/','\App\Http\Controllers\Main\MainController@index')->name('main');
-Route::get('/admin', '\App\Http\Controllers\Admin\Main\AdminController@index')->name('admin.main.index');
+Route::group(['middleware' => ['auth','verified']],function (){
+    Route::get('/personal', 'App\Http\Controllers\Personal\Main\PersonalController@index')->name('personal.main.index');
+    Route::get('/personal/liked', 'App\Http\Controllers\Personal\Liked\LikeController@index')->name('personal.liked.index');
+    Route::get('/personal/comments', 'App\Http\Controllers\Personal\Comment\CommentController@index')->name('personal.comment.index');
+});
+
 
 Route::group(['middleware' => ['auth','admin', 'verified']],function(){
+    Route::get('/admin', '\App\Http\Controllers\Admin\Main\AdminController@index')->name('admin.main.index');
+
     Route::resource('admin/categories',\App\Http\Controllers\Admin\Category\CategoryController::class)->names('admin.category');
     Route::get('admin/category/restore','\App\Http\Controllers\Admin\Category\CategoryController@restore')->name('admin.category.restore');
     Route::patch('admin/categories','\App\Http\Controllers\Admin\Category\CategoryController@restorestore')->name('admin.category.restore.store');
