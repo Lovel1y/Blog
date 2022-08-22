@@ -6,7 +6,7 @@ use App\Service\PostService;
 
 class BaseController
 {
-    public $service;
+    protected $service;
 
     public function __construct(PostService $service)
     {
