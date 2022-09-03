@@ -16,7 +16,15 @@ use Illuminate\Support\Facades\Route;
 //Route::resource('post',\App\Http\Controllers\Main\MainController::class);
 
 
-Route::get('/', '\App\Http\Controllers\Main\MainController@index')->name('main');
+Route::get('/', '\App\Http\Controllers\Main\MainController@index')->name('main.index');
+
+Route::resource('/posts', \App\Http\Controllers\Post\PostController::class)->names('post');
+
+Route::post('/posts/{post}/comments', \App\Http\Controllers\Post\Comment\StoreController::class)->name('post.comment.store');
+Route::post('/posts/{post}/likes', \App\Http\Controllers\Post\Like\StoreController::class)->name('post.like.store');
+Route::get('/categories', \App\Http\Controllers\Category\IndexController::class)->name('category.index');
+Route::get('/categories/{category}/posts', \App\Http\Controllers\Category\Post\IndexController::class)->name('category.post.index');
+
 Route::group(['prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/', 'App\Http\Controllers\Personal\Main\PersonalController@index')->name('personal.main.index');
 
@@ -27,10 +35,6 @@ Route::group(['prefix' => 'personal', 'middleware' => ['auth', 'verified']], fun
     });
 
     Route::resource('/comment', \App\Http\Controllers\Personal\Comment\CommentController::class)->names('personal.comment');
-//        Route::get('/', 'App\Http\Controllers\Personal\Comment\CommentController@index')->name('personal.comment.index');
-//        Route::get('/{comment}/edit', 'App\Http\Controllers\Personal\Comment\CommentController@edit')->name('personal.comment.edit');
-//        Route::patch('/{comment}', 'App\Http\Controllers\Personal\Comment\CommentController@update')->name('personal.comment.update');
-//        Route::delete('/{comment}', 'App\Http\Controllers\Personal\Comment\CommentController@delete')->name('personal.comment.delete');
 
 });
 

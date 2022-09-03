@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Personal\Comment;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Personal\Comment\UpdateRequest;
 use App\Models\Comment;
 
-class CommentController
+class CommentController extends Controller
 {
     public function index()
     {
